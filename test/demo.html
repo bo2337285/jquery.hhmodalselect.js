@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="demo.css">
+		<link rel="stylesheet" type="text/css" href="../src/jquery.hhmodalselect.css">
+		<style type="text/css">
+			#c{ width: 120px; margin-top: 10px; margin-left: 10px; }
+		</style>
+	</head>
+	<body>
+		<input type="text" id="c" />
+		<p>
+			<input type="button" id="btn0" value="test setDefalutVal" />
+			<input type="button" id="btn1" value="test removeAllSelectedItem" />
+		</p>
+		<script src="../lib/jquery.js"></script>
+		<script src="./data.js"></script>
+		<script src="./demo.js"></script>
+		<script src="../src/jquery.hhmodalselect.js"></script>
+		<script >
+			var arr = []
+			for (var i = 0; i < 1000; i++) {
+				arr.push({"id":i,"name":"gg"+i,"label":"下载"+i,"children":[]})
+			}
+
+			window.hhms = $("#c").hhModalSelect({
+				// data:arr,
+				data:data,
+				isShowChkAll:true,
+				// required : true,
+				/*keys:{
+					id:"id",
+					name:"name",
+					label:"name",
+					children:"children"
+				},*/
+				// scene : 'singleRadio',
+				/*outNameMap : {0:"level0",1:"level1"}*/
+				// itemOnCheck : onCheck,//勾选选项时的回调
+				onModalSubmit : onModalSubmit,//点击确定时的回调
+				onModalCancel : onModalCancel,//点击取消时的回调
+				// onComplete : onComplete,//初始化完成时的回调,
+				selectedLabelFmt : selectedLabelFmt,//更新文本框文本内容时的回调
+				onRemoveAllSelectedItem : onRemoveAllSelectedItem,
+				outputDom : [{level:"0",id:"aa0",name:"ICP.web"},{level:"1",id:"aa1",name:"ICP.web1"}]//装载输出内容的配置，默认会拼成input:hidden
+			})
+			hhms.setDefalutVal()
+		</script>
+	</body>
+</html>
